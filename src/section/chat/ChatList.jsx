@@ -18,7 +18,7 @@ const List = [
   },
   {
     imgSrc: User02,
-    name: "Saddam",
+    name: "Saddam Hussain",
     message: "I like your confidence 💪",
   },
   {
@@ -76,7 +76,7 @@ export default function ChatList() {
           </button>
         </form>
 
-        <div className="no-scrollbar overflow-auto max-h-full">
+        <div className="no-scrollbar overflow-auto max-h-full space-y-2.5">
           {/* Chat List Items*/}
           {List.map((Object, item) => {
             return (
@@ -84,12 +84,22 @@ export default function ChatList() {
                 className="flex cursor-pointer items-center rounded px-4 py-2 hover:bg-gray-2 dark:hover:bg-strokedark"
                 key={item}
               >
-                <div >
+                <div className="relative mr-3.5 h-11 w-full max-w-11 rounded-full">
                   <img
                     src={Object.imgSrc}
                     alt="profile"
                     className="h-full w-full rounded full object-cover object-center"
                   />
+
+                  <span className="absolute bottom-0 right-0 block h-3 w-3 rounded-full border-2 border-gray-2 bg-success "></span>
+                </div>
+
+                <div className="w-full">
+                  <h5 className=" text-sm font-medium text-black dark:text-white">
+                    {Object.name}
+                  </h5>
+
+                  <p className="text-sm">{Object.message} </p>
                 </div>
               </div>
             );
