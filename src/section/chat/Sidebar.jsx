@@ -1,5 +1,6 @@
 import { Chat, SignOut } from "@phosphor-icons/react";
 import React from "react";
+import DarkMode from "../../components/DarkMode";
 
 export default function Sidebar() {
   return (
@@ -11,6 +12,9 @@ export default function Sidebar() {
       <div className="flex flex-col grow"></div>
 
       <div className="">
+<DarkMode /> 
+
+
         <div className="mx-auto border rounded-md border-stroke p-3 dark:border-strokedark hover:bg-stone-300 hover:cursor-pointer">
           <SignOut size={24} />
         </div>
