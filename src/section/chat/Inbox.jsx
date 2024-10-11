@@ -132,8 +132,6 @@ export default function Inbox() {
         </div>
       </div>
 
-        
-
       {/* Chat Input */}
       <div className="sticky bottom-0 border-t border-stroke bg-white px-6 py-5 dark:border-strokedark dark:bg-boxdark">
         <form className="flex items-center justify-between space-x-4.5">

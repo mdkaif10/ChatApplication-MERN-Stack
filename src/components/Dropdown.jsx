@@ -1,11 +1,27 @@
 import { DotsThree, PencilSimple, Trash } from "@phosphor-icons/react";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function Dropdown() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
+
+  useEffect(() => {
+    const clickHandler = ({target}) => {
+      if(!dropdown.current) return;
+
+      if(!dropdown || dropdown.current.contains(target) || trigger.current.contains(target)
+      )
+    {return;}
+    setDropdownOpen(false);
+
+    };
+
+      document.addEventListener("click", clickHandler);
+      return () => document.removeEventListener("click", clickHandler);
+
+  });
 
   return (
     <div className="relative flex">
@@ -14,7 +30,7 @@ export default function Dropdown() {
         ref={trigger}
         onClick={() => setDropdownOpen((prev) => !prev)}
       >
-        <DotsThree size={24} />
+        <DotsThree weight="bold" size={24} />
       </button>
 
       <div
