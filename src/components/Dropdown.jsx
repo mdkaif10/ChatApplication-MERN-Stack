@@ -8,19 +8,31 @@ export default function Dropdown() {
   const dropdown = useRef(null);
 
   useEffect(() => {
-    const clickHandler = ({target}) => {
-      if(!dropdown.current) return;
+    const clickHandler = ({ target }) => {
+      if (!dropdown.current) return;
 
-      if(!dropdown || dropdown.current.contains(target) || trigger.current.contains(target)
-      )
-    {return;}
-    setDropdownOpen(false);
-
+      if (
+        !dropdown ||
+        dropdown.current.contains(target) ||
+        trigger.current.contains(target)
+      ) {
+        return;
+      }
+      setDropdownOpen(false);
     };
 
-      document.addEventListener("click", clickHandler);
-      return () => document.removeEventListener("click", clickHandler);
+    document.addEventListener("click", clickHandler);
+    return () => document.removeEventListener("click", clickHandler);
+  });
 
+  useEffect(() => {
+    const keyHandler = ({ keyCode }) => {
+      if (!dropdownOpen || keyCode !== 27) return; // Every key has a defined keycode or value esc key code is 27
+
+      setDropdownOpen(false);
+    };
+    document.addEventListener("keydown", keyHandler);
+    return () => document.removeEventListener("keydown", keyHandler);
   });
 
   return (
