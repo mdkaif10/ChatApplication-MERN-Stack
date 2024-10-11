@@ -7,6 +7,7 @@ import {
   PaperPlaneTilt,
   Smiley,
 } from "@phosphor-icons/react";
+import Dropdown from "../../components/Dropdown";
 
 export default function Inbox() {
   return (
@@ -31,7 +32,7 @@ export default function Inbox() {
         </div>
 
         <div>
-          <DotsThree weight="bold" size={24} />
+          <Dropdown />
         </div>
       </div>
 

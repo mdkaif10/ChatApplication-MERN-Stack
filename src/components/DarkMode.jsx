@@ -22,9 +22,12 @@ export default function DarkMode() {
           }}
         />
 
-        <span className={`absolute top-1/2 left-[3px] flex h-6 w-6 -translate-y-1/2 translate-x-0 items-center
-         justify-center rounded-full bg-white duration-75 ease-linear ${ 
-            colorMode === 'dark' && '!right-[3px] !translate-x-full'}`}>
+        <spanz
+          className={`absolute top-1/2 left-[3px] flex h-6 w-6 -translate-y-1/2 translate-x-0 items-center
+         justify-center rounded-full bg-white duration-75 ease-linear ${
+           colorMode === "dark" && "!right-[3px] !translate-x-full"
+         }`}
+        >
           <span className="dark:hidden">
             <Sun />
           </span>
@@ -32,7 +35,7 @@ export default function DarkMode() {
           <span className="hidden dark:inline-block">
             <Moon />
           </span>
-        </span>
+        </spanz>
       </label>
     </li>
   );
