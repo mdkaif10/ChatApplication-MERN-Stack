@@ -5,6 +5,9 @@ import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 
 export default function EmojiPicker() {
+
+  const colorMode = JSON.parse(localStorage.getItem("color-theme"));
+
   const [pickerOpen, setPickerOpen ] = useState(false);
 
   const handleTrigger = (e) => {
@@ -24,7 +27,7 @@ export default function EmojiPicker() {
     
       {pickerOpen && (
         <div className="absolute z-40 -top-115 right-0">
-          <Picker data={data} onEmojiSelect={console.log} />
+          <Picker  theme={colorMode} data={data} onEmojiSelect={console.log} />
         </div>
       )}
     
