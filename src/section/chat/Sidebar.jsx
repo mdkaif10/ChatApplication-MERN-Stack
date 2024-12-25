@@ -8,6 +8,7 @@ import {
   Users,
 } from "@phosphor-icons/react";
 import DarkMode from "../../components/DarkMode";
+import { useState } from "react";
 
 const NAVIGATION = [
   {
@@ -33,6 +34,12 @@ const NAVIGATION = [
 ];
 
 export default function Sidebar() {
+  const { selected, setSelected } = useState(0);
+
+  const handleClick = (key) => {
+    setSelected(key);
+  };
+
   return (
     <div className="flex flex-col border-r border-stroke p-2 dark:border-strokedark">
       {/* <div className="mx-auto border rounded-md border-stroke p-2 dark:border-strokedark">
@@ -51,19 +58,22 @@ export default function Sidebar() {
           <div
             key={key}
             className="space-y-2 flex flex-col text-center hover:coursor-pointer hover:text-primary"
-            onClick={() => {}}
+            onClick={() => handleClick(key)}
           >
-           
-           <div className="mx-auto border rounded-md border-stroke p-2 dark:border-strokedark">
-            {icon}
-
-
-
-          </div>
-          <span className="font-medium text-sm">{title}</span>
-
-
-
+            <div
+              className={`mx-auto border rounded-md border-stroke p-2 dark:border-strokedark ${
+                selected === key && "bg-primary bg-opacity-90 text-white"
+              } hover:border-primary dark:hover:border-primary  `}
+            >
+              {icon}
+            </div>
+            <span
+              className={`font-medium text-sm ${
+                selected === key && "text-primary"
+              }`}
+            >
+              {title}
+            </span>
           </div>
         ))}
       </div>
