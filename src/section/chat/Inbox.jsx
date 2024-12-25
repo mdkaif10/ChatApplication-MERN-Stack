@@ -5,7 +5,9 @@ import {
   DotsThree,
   LinkSimple,
   PaperPlaneTilt,
+  PhoneCall,
   Smiley,
+  VideoCamera,
 } from "@phosphor-icons/react";
 import Dropdown from "../../components/Dropdown";
 import EmojiPicker from "../../components/EmojiPicker";
@@ -32,7 +34,13 @@ export default function Inbox() {
           </div>
         </div>
 
-        <div>
+        <div className="flex flex-row items-center space-x-8">
+          <button>
+            <VideoCamera size={24} />
+          </button>
+          <button>
+            <PhoneCall size={24} />
+          </button>
           <Dropdown />
         </div>
       </div>
