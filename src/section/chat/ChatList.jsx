@@ -1,5 +1,5 @@
 import { MagnifyingGlass } from "@phosphor-icons/react";
-import React, { useState } from "react";
+import { useState } from "react";
 
 import User01 from "../../images/user/user-01.png";
 import User02 from "../../images/user/user-02.png";
