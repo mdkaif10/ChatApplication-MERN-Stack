@@ -1,4 +1,4 @@
-import { Chat, Clock, VideoCamera, X } from "@phosphor-icons/react";
+import { Chat, Clock, DotsThreeVertical, VideoCamera, X } from "@phosphor-icons/react";
 import React from "react";
 
 export default function UserInfo(handleToggleUserInfo) {
@@ -43,6 +43,9 @@ export default function UserInfo(handleToggleUserInfo) {
         <button className="w-full border border-stroke dark:border-strokedark flex flex-row items-center justify-center">
           <VideoCamera size={20} className="mr-3" />
           Video
+        </button>
+        <button className=" border border-stroke dark:border-strokedark flex flex-row items-center justify-center">
+          <DotsThreeVertical size={20} />
         </button>
       </div>
     </div>
