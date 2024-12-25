@@ -1,7 +1,6 @@
 import {
   Chat,
   DotsThreeCircle,
-  Shapes,
   Share,
   SignOut,
   UserCircle,
@@ -81,9 +80,12 @@ export default function Sidebar() {
       <div className="flex flex-col grow"></div>
 
       <div className="space-y-4.5">
+        <div className="flex flex-row items-center justify-center">
         <DarkMode />
 
-        <div className="mx-auto border rounded-md border-stroke p-3 dark:border-strokedark hover:bg-stone-300 hover:cursor-pointer">
+        </div>
+
+        <div className="flex flex-row items-center justify-center border rounded-md border-stroke p-3 dark:border-strokedark hover:bg-stone-300 hover:cursor-pointer">
           <SignOut size={24} />
         </div>
       </div>
