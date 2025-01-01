@@ -55,7 +55,7 @@ console.log(gifUrl);
       <input
         type="text"
         placeholder="Search Giphy"
-        className="border border-stroke rounded-md p-2 w-full mb-2 outline-none"
+        className="border border-stroke dark:border-strokedark rounded-md p-2 w-full mb-2 outline-none bg-transparent"
         value={value}
         onChange={(e) => {
           setValue(e.target.value);
@@ -77,7 +77,7 @@ console.log(gifUrl);
             key={value}
             onGifClick={handelGifClick}
             data={gifs}
-          />: <div className="flex flex-row items-center justify-center h-full">
+          />: <div className="flex flex-row items-center justify-center h-full space-y-2">
             <MagnifyingGlass size={48} weight="bold" />
             <span className="text-xl text-body font-semibold">Search for gifs</span>
         </div>}
