@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+
 
 import user01 from "../../images/user/user-01.png";
 import {
   DotsThree,
+  Gif,
   LinkSimple,
   PaperPlaneTilt,
   PhoneCall,
@@ -12,15 +14,24 @@ import {
 } from "@phosphor-icons/react";
 import Dropdown from "../../components/Dropdown";
 import EmojiPicker from "../../components/EmojiPicker";
-import UserInfo from "./UserInfo";
+import UserInfo from "./userinfo";
 import Giphy from "../../components/Giphy";
 
 export default function Inbox() {
   const [userInfoOpen, setUserInfoOpen] = React.useState(false);
 
+  const { gifOpen, setGifOpen } = useState(false);
+ 
+  
+    const handleToggleGif = (e) => {
+      e.preventDefault();
+      setGifOpen((prev) => !prev);
+    }
+ 
   const handleToggleUserInfo = () => {
     setUserInfoOpen((prev) => !prev);
   };
+
 
   return (
     <>
@@ -169,6 +180,10 @@ export default function Inbox() {
                 <button className="hover:text-primary">
                   <LinkSimple size={20} />
                 </button>
+                <button
+                 onClick={handleToggleGif}>
+                  <Gif size={20} />
+                </button>
                 <button className="hover:text-primary">
                   <EmojiPicker />
                 </button>
@@ -180,7 +195,7 @@ export default function Inbox() {
             </button>
           </form>
 
-          <Giphy />
+          {gifOpen && <Giphy />}
         </div>
       </div>
 
