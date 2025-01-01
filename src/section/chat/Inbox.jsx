@@ -13,6 +13,7 @@ import {
 import Dropdown from "../../components/Dropdown";
 import EmojiPicker from "../../components/EmojiPicker";
 import UserInfo from "./UserInfo";
+import Giphy from "../../components/Giphy";
 
 export default function Inbox() {
   const [userInfoOpen, setUserInfoOpen] = React.useState(false);
@@ -156,7 +157,7 @@ export default function Inbox() {
 
         {/* Chat Input */}
         <div className="sticky bottom-0 border-t border-stroke bg-white px-6 py-5 dark:border-strokedark dark:bg-boxdark">
-          <form className="flex items-center justify-between space-x-4.5">
+          <form className="flex items-center justify-between space-x-4.5 mb-3">
             <div className="relative w-full">
               <input
                 type="text"
@@ -178,6 +179,8 @@ export default function Inbox() {
               <PaperPlaneTilt size={24} weight="bold" />
             </button>
           </form>
+
+          <Giphy />
         </div>
       </div>
 
