@@ -5,6 +5,7 @@ import { Grid } from "@giphy/react-components";
 import { GiphyFetch } from "@giphy/js-fetch-api";
 
 import _ from "lodash";
+import { MagnifyingGlass } from "@phosphor-icons/react";
 
 const gf = new GiphyFetch("ak2Viynf0qhURfKlXFuSxyE93DnAAbkS");
 
@@ -68,7 +69,7 @@ console.log(gifUrl);
 
       <div className="h-48 overflow-auto no-scrollbar">
         <div className="grid grid-cols-3 gap-2">
-          <Grid
+          {gifs.length > 0 ?<Grid
             width={gridRef.current?.offsetWidth}
             columns={8}
             gutter={6}
@@ -76,7 +77,10 @@ console.log(gifUrl);
             key={value}
             onGifClick={handelGifClick}
             data={gifs}
-          />
+          />: <div className="flex flex-row items-center justify-center h-full">
+            <MagnifyingGlass size={48} weight="bold" />
+            <span className="text-xl text-body font-semibold">Search for gifs</span>
+        </div>}
         </div>
       </div>
     </div>
