@@ -6,10 +6,13 @@ import { GiphyFetch } from "@giphy/js-fetch-api";
 
 import _ from "lodash";
 import { MagnifyingGlass } from "@phosphor-icons/react";
+import { useDispatch } from "react-redux";
+import { toggleGifModal } from "../redux/slices/app";
 
 const gf = new GiphyFetch("ak2Viynf0qhURfKlXFuSxyE93DnAAbkS");
 
 export default function Giphy() {
+  const dispatch = useDispatch();
   const gridRef = React.useRef(null);
   const [loading, setLoading] = React.useState(false);
   const [value, setValue] = React.useState("");
@@ -53,10 +56,14 @@ export default function Giphy() {
   }, []);
 
   const handelGifClick = (gif, e) => {
-e.preventDefault();
-//console.log(gif);
-const gifUrl = gif.images.original.url;
-console.log(gifUrl);
+    e.preventDefault();
+    const gifUrl = gif.images.original.url;
+    dispatch(
+      toggleGifModal({
+        value: true,
+        url: gifUrl,
+      })
+    );
   };
 
   const toggleGifs = () => {
@@ -65,7 +72,10 @@ console.log(gifUrl);
 
   return (
     <div ref={gridRef} className="w-full mt-3">
-      <button onClick={toggleGifs} className="mb-2 p-2 bg-blue-500 text-white rounded">
+      <button
+        onClick={toggleGifs}
+        className="mb-2 p-2 bg-blue-500 text-white rounded"
+      >
         {showGifs ? "Hide Gifs" : "Show Gifs"}
       </button>
       {showGifs && (
@@ -97,7 +107,9 @@ console.log(gifUrl);
               ) : (
                 <div className="flex flex-row items-center justify-center h-full space-y-2">
                   <MagnifyingGlass size={48} weight="bold" />
-                  <span className="text-xl text-body font-semibold">Search for gifs</span>
+                  <span className="text-xl text-body font-semibold">
+                    Search for gifs
+                  </span>
                 </div>
               )}
             </div>
