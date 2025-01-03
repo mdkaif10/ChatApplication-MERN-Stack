@@ -5,7 +5,7 @@ import {
 } from "react-redux";
 
 import { persistStore, persistReducer } from "redux-persist";
-import { rootPersistConfig } from "./rootReducer";
+import rootReducer, { rootPersistConfig } from "./rootReducer";
 
 const store = configureStore({
   reducer: persistReducer(rootPersistConfig, rootReducer),
