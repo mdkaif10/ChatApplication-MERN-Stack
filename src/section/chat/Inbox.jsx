@@ -19,14 +19,12 @@ import Giphy from "../../components/Giphy";
 
 export default function Inbox() {
   const [userInfoOpen, setUserInfoOpen] = React.useState(false);
-
-  const { gifOpen, setGifOpen } = useState(false);
+  const [gifOpen, setGifOpen] = useState(false);
  
-  
-    const handleToggleGif = (e) => {
-      e.preventDefault();
-      setGifOpen((prev) => !prev);
-    }
+  const handleToggleGif = (e) => {
+    e.preventDefault();
+    setGifOpen((prev) => !prev);
+  };
  
   const handleToggleUserInfo = () => {
     setUserInfoOpen((prev) => !prev);
@@ -74,7 +72,7 @@ export default function Inbox() {
 
         <div className="max-h-full space-y-3.5 overflow-auto no-scrollbar px-6 py-7.5 grow">
           <div className="max-w-125">
-            <p className="mb-2.5 text-sm font-medium">Andri thomas</p>
+            <p className="mb-2.5 text-sm font-medium">Ankit</p>
             <div className="mb-2.5 rounded-2xl rounded-tl-none bg-gray px-5 py-3 dark:bg-boxdark-2">
               <p>i am a student of assam down town university</p>
             </div>
@@ -93,7 +91,7 @@ export default function Inbox() {
           </div>
 
           <div className="max-w-125">
-            <p className="mb-2.5 text-sm font-medium">Andri thomas</p>
+            <p className="mb-2.5 text-sm font-medium">Ankit</p>
             <div className="mb-2.5 rounded-2xl rounded-tl-none bg-gray px-5 py-3 dark:bg-boxdark-2">
               <p>i am a student of assam down town university</p>
             </div>
@@ -111,7 +109,7 @@ export default function Inbox() {
             <p className="text-xs">7:00pm</p>
           </div>
           <div className="max-w-125">
-            <p className="mb-2.5 text-sm font-medium">Andri thomas</p>
+            <p className="mb-2.5 text-sm font-medium">Ankit</p>
             <div className="mb-2.5 rounded-2xl rounded-tl-none bg-gray px-5 py-3 dark:bg-boxdark-2">
               <p>i am a student of assam down town university</p>
             </div>
@@ -129,7 +127,7 @@ export default function Inbox() {
             <p className="text-xs">7:00pm</p>
           </div>
           <div className="max-w-125">
-            <p className="mb-2.5 text-sm font-medium">Andri thomas</p>
+            <p className="mb-2.5 text-sm font-medium">Ankit</p>
             <div className="mb-2.5 rounded-2xl rounded-tl-none bg-gray px-5 py-3 dark:bg-boxdark-2">
               <p>i am a student of assam down town university</p>
             </div>
@@ -147,7 +145,7 @@ export default function Inbox() {
             <p className="text-xs">7:00pm</p>
           </div>
           <div className="max-w-125">
-            <p className="mb-2.5 text-sm font-medium">Andri thomas</p>
+            <p className="mb-2.5 text-sm font-medium">Ankit</p>
             <div className="mb-2.5 rounded-2xl rounded-tl-none bg-gray px-5 py-3 dark:bg-boxdark-2">
               <p>i am a student of assam down town university</p>
             </div>

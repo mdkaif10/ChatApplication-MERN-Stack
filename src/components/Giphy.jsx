@@ -15,6 +15,7 @@ export default function Giphy() {
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);
   const [gifs, setGifs] = React.useState([]); // store fetched gifs
+  const [showGifs, setShowGifs] = React.useState(false); // state to control visibility
 
   const fetchGifs = async (offset) => {
     return gf.search(value, { offset, limit: 10 });
@@ -23,6 +24,14 @@ export default function Giphy() {
   const debouncedFetchGifs = _.debounce(async () => {
     setLoading(true);
     setError(null); // reset previous error
+    try {
+      const newGifs = await fetchGifs(0);
+      setGifs(newGifs.data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
   }, 500); // debounce time to 500ms
 
   useEffect(() => {
@@ -50,39 +59,51 @@ const gifUrl = gif.images.original.url;
 console.log(gifUrl);
   };
 
+  const toggleGifs = () => {
+    setShowGifs(!showGifs);
+  };
+
   return (
     <div ref={gridRef} className="w-full mt-3">
-      <input
-        type="text"
-        placeholder="Search Giphy"
-        className="border border-stroke dark:border-strokedark rounded-md p-2 w-full mb-2 outline-none bg-transparent"
-        value={value}
-        onChange={(e) => {
-          setValue(e.target.value);
-            debouncedFetchGifs(); // call debounced fuction on  every change 
-        }}
-      />
-
-      {loading && <p>Loading...</p>}
-
-      {error && <p className="text-red">Error: {error}</p>}
-
-      <div className="h-48 overflow-auto no-scrollbar">
-        <div className="grid grid-cols-3 gap-2">
-          {gifs.length > 0 ?<Grid
-            width={gridRef.current?.offsetWidth}
-            columns={8}
-            gutter={6}
-            fetchGifs={fetchGifs}
-            key={value}
-            onGifClick={handelGifClick}
-            data={gifs}
-          />: <div className="flex flex-row items-center justify-center h-full space-y-2">
-            <MagnifyingGlass size={48} weight="bold" />
-            <span className="text-xl text-body font-semibold">Search for gifs</span>
-        </div>}
-        </div>
-      </div>
+      <button onClick={toggleGifs} className="mb-2 p-2 bg-blue-500 text-white rounded">
+        {showGifs ? "Hide Gifs" : "Show Gifs"}
+      </button>
+      {showGifs && (
+        <>
+          <input
+            type="text"
+            placeholder="Search Giphy"
+            className="border border-stroke dark:border-strokedark rounded-md p-2 w-full mb-2 outline-none bg-transparent"
+            value={value}
+            onChange={(e) => {
+              setValue(e.target.value);
+              debouncedFetchGifs(); // call debounced function on every change
+            }}
+          />
+          {loading && <p>Loading...</p>}
+          {error && <p className="text-red">Error: {error}</p>}
+          <div className="h-48 overflow-auto no-scrollbar">
+            <div className="grid grid-cols-3 gap-2">
+              {gifs.length > 0 ? (
+                <Grid
+                  width={gridRef.current?.offsetWidth}
+                  columns={8}
+                  gutter={6}
+                  fetchGifs={fetchGifs}
+                  key={value}
+                  onGifClick={handelGifClick}
+                  data={gifs}
+                />
+              ) : (
+                <div className="flex flex-row items-center justify-center h-full space-y-2">
+                  <MagnifyingGlass size={48} weight="bold" />
+                  <span className="text-xl text-body font-semibold">Search for gifs</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
