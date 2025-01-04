@@ -1,12 +1,33 @@
 import { PaperPlaneTilt, X } from "@phosphor-icons/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleGifModal } from "../redux/slices/app";
 
 export default function GiftModal() {
+  const modalRef = React.useRef(null);
+
   const dispatch = useDispatch();
+
   const { gif } = useSelector((state) => state.app.modals);
   const { selectedGifUrl } = useSelector((state) => state.app);
+
+  useEffect(() => {
+    const keyHandler = ({ keyCode }) => {
+      if (!gif || keyCode !== 27) return;
+
+      dispatch(
+        toggleGifModal({
+          value: false,
+          url: null,
+        })
+      );
+      // Every key has a defined keycode or value esc key code is 27
+
+      setDropdownOpen(false);
+    };
+    document.addEventListener("keydown", keyHandler);
+    return () => document.removeEventListener("keydown", keyHandler);
+  });
 
   return (
     <div
@@ -14,11 +35,15 @@ export default function GiftModal() {
         gif ? "block" : "hidden"
       }`}
     >
-      <div className="md:px-17.5 w-full max-w-142.5 rounded-lg bg-white dark:bg-boxdark md:py-8 px-8 py-12">
+      <div
+        ref={modalRef}
+        className="md:px-17.5 w-full max-w-142.5 rounded-lg bg-white dark:bg-boxdark md:py-8 px-8 py-12"
+      >
         <div className="flex flex-row items-center justify-between mb-8 space-x-2">
           <div className="text-md font-medium text-black dark:text-white">
             Send a gif
           </div>
+
           <button onClick={() => dispatch(toggleGifModal(false))}>
             <X size={24} />
           </button>
