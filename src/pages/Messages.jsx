@@ -1,6 +1,7 @@
 import React from "react";
 import { ChatList, MessageInbox, Sidebar } from "../section/chat";
 import GiftModal from "../components/GiftModal";
+import VoiceRecorder from "../components/VoiceRecorder";
 
 export default function Messages() {
   return (
@@ -17,6 +18,7 @@ export default function Messages() {
       </div>
 
       <GiftModal />
+      <VoiceRecorder/>
     </div>
   );
 }

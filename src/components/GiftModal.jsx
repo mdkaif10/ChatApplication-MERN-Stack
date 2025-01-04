@@ -21,9 +21,7 @@ export default function GiftModal() {
           url: null,
         })
       );
-      // Every key has a defined keycode or value esc key code is 27
-
-      setDropdownOpen(false);
+     
     };
     document.addEventListener("keydown", keyHandler);
     return () => document.removeEventListener("keydown", keyHandler);
