@@ -48,13 +48,23 @@ targetContainer.appendChild(audio);
         className="md:px-17.5 w-full max-w-142.5 rounded-lg bg-white dark:bg-boxdark md:py-8 px-8 py-12"
       >
         <div id="audio-container" className="flex flex-col space-y-8 items-center">
+          {/* Add your voice recorder UI here */}
          <AudioRecorder showVisualizer={true}
           onRecordingComplete={(blob) => addAudioElement(blob)}
           recorderControls={recorderControls} 
           downloadFileExtension="mp3"
 
          />
-          {/* Add your voice recorder UI here */}
+
+         <div className="flex flex-row items-center space-x-4 w-full mt-8 ">
+          <button className="w-full bg-primary rounded-lg p-2 text-white hover: bg-opacity-90">Send </button>
+           <button onClick={() => 
+            {
+              dispatch(toggleAudioModal(false));
+              }}
+            className="w-full border bg-transparent border-red rounded-lg p-2 text-red">Cancel </button>
+           
+            </div>
         </div>
       </div>
     </div>
