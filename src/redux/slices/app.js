@@ -5,6 +5,7 @@ import { update } from "lodash";
 const initialState = {
   modals: {
     gif: false,
+    audio: false,
   },
   selectedGifUrl: "",
 };
