@@ -18,6 +18,7 @@ import UserInfo from "./userinfo";
 import Giphy from "../../components/Giphy";
 import { useDispatch } from "react-redux";
 import { toggleAudioModal } from "../../redux/slices/app";
+import Attachment from "../../components/Attachment";
 
 export default function Inbox() {
   const dispatch = useDispatch();
@@ -188,7 +189,7 @@ export default function Inbox() {
                   <Microphone size={20} />
                 </button>
                 <button className="hover:text-primary">
-                  <LinkSimple size={20} />
+                  <Attachment />
                 </button>
                 <button onClick={handleToggleGif}>
                   <Gif size={20} />
