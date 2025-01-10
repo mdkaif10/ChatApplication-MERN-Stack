@@ -2,6 +2,7 @@ import React from "react";
 import { ChatList, MessageInbox, Sidebar } from "../section/chat";
 import GiftModal from "../components/GiftModal";
 import VoiceRecorder from "../components/VoiceRecorder";
+import MediaPicker from "../components/MediaPicker";
 
 export default function Messages() {
   return (
@@ -19,6 +20,7 @@ export default function Messages() {
 
       <GiftModal />
       <VoiceRecorder/>
+      <MediaPicker/>
     </div>
   );
 }

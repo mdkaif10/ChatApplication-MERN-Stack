@@ -1,7 +1,9 @@
 import { File, Image, Paperclip } from "@phosphor-icons/react";
 import React, { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 
 export default function Attachment() {
+  const dispatch = useDispatch();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef(null);
@@ -42,7 +44,8 @@ export default function Attachment() {
         ref={trigger}
         onClick={(e) => {
           e.preventDefault();
-          setDropdownOpen((prev) => !prev)}}
+          setDropdownOpen((prev) => !prev);
+        }}
       >
         <Paperclip weight="bold" size={20} />
       </button>
@@ -55,7 +58,12 @@ export default function Attachment() {
           dropdownOpen === true ? "block" : "hidden"
         }`}
       >
-        <button className="flex w-full items-center gap-2 rounded-sm px-4 py-1.5 text-left text-sm hover:bg-gray dark:hover:bg-meta-40">
+        <button
+          onClick={() => {
+            dispatch(toggleMediaModal(true));
+          }}
+          className="flex w-full items-center gap-2 rounded-sm px-4 py-1.5 text-left text-sm hover:bg-gray dark:hover:bg-meta-40"
+        >
           <Image size={20} />
           Images & Videos
         </button>
