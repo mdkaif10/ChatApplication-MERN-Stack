@@ -188,10 +188,11 @@ export default function Inbox() {
                 <button onClick={handleMicClick} className="hover:text-primary">
                   <Microphone size={20} />
                 </button>
-                <button onClick={(e)=> {
-                      e.preventDefault();
-                }
-                } className="hover:text-primary">
+                <button
+                // onClick={(e)=> {
+                  //    e.preventDefault();
+                //}}
+                 className="hover:text-primary">
                   <Attachment />
                 </button>
                 <button onClick={handleToggleGif}>

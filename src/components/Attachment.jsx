@@ -40,16 +40,18 @@ export default function Attachment() {
       <button
         className="text-[#98A6AD] hover:text-body"
         ref={trigger}
-        onClick={() => setDropdownOpen((prev) => !prev)}
+        onClick={(e) => {
+          e.preventDefault();
+          setDropdownOpen((prev) => !prev)}}
       >
-        <Paperclip weight="bold" size={24} />
+        <Paperclip weight="bold" size={20} />
       </button>
 
       <div
         ref={dropdown}
         onFocus={() => setDropdownOpen(true)}
         onBlur={() => setDropdownOpen(false)}
-        className={`absolute right-0 top-full z-40 w-40 space-y-1 rounded-sm border border-stroke bg-white p-1.5 shadow-default dark:border-strokedark dark:bg-boxdark ${
+        className={`absolute right-0 -top-24 z-40 w-54 space-y-1 rounded-sm border border-stroke bg-white p-1.5 shadow-default dark:border-strokedark dark:bg-boxdark ${
           dropdownOpen === true ? "block" : "hidden"
         }`}
       >
