@@ -7,7 +7,7 @@ const initialState = {
     gif: false,
     audio: false,
     media: false,
-    document: false,
+    doc: false,
   },
   selectedGifUrl: "",
 };
@@ -27,7 +27,7 @@ const slice = createSlice({
       state.modals.media = action.payload;
     },
     updateDocumentModal: (state, action) => {
-      state.modals.document = action.payload;
+      state.modals.doc = action.payload;
     },
   },
 });

@@ -59,20 +59,25 @@ export default function Attachment() {
           dropdownOpen === true ? "block" : "hidden"
         }`}
       >
-        <button
+        <div
           onClick={() => {
             dispatch(toggleMediaModal(true));
           }}
-          className="flex w-full items-center gap-2 rounded-sm px-4 py-1.5 text-left text-sm hover:bg-gray dark:hover:bg-meta-40"
+          className="flex w-full items-center gap-2 rounded-sm px-4 py-1.5 text-left text-sm hover:bg-gray dark:hover:bg-meta-40 cursor-pointer"
         >
           <Image size={20} />
           Images & Videos
-        </button>
+        </div>
 
-        <button className="flex w-full items-center gap-2 rounded-sm px-4 py-1.5 text-left text-sm hover:bg-gray dark:hover:bg-meta-40">
+        <div
+          onClick={() => {
+            dispatch(toggleDocumentModal(true));
+          }}
+          className="flex w-full items-center gap-2 rounded-sm px-4 py-1.5 text-left text-sm hover:bg-gray dark:hover:bg-meta-40 cursor-pointer"
+        >
           <File size={20} />
           Files & Docs
-        </button>
+        </div>
       </div>
     </div>
   );

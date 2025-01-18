@@ -1,19 +1,19 @@
 import { PaperPlaneTilt, X } from "@phosphor-icons/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleMediaModal } from "../redux/slices/app";
+import { toggleDocumentModal } from "../redux/slices/app";
 
-export default function MediaPicker() {
+export default function DocumentPicker() {
   const modalRef = React.useRef(null);
   const dispatch = useDispatch();
 
-  const { media } = useSelector((state) => state.app.modals);
+  const { doc } = useSelector((state) => state.app.modals);
 
   useEffect(() => {
     const keyHandler = ({ keyCode }) => {
-      if (!media || keyCode !== 27) return;
+      if (!doc || keyCode !== 27) return;
 
-      dispatch(toggleMediaModal(false));
+      dispatch(toggleDocumentModal(false));
     };
     document.addEventListener("keydown", keyHandler);
     return () => document.removeEventListener("keydown", keyHandler);
@@ -22,7 +22,7 @@ export default function MediaPicker() {
   return (
     <div
       className={`fixed left-0 top-0 z-999999 flex min-h-screen w-full items-center justify-center bg-black/90 px-4 py-5 ${
-        media ? "block" : "hidden"
+        doc ? "block" : "hidden"
       }`}
     >
       <div
@@ -31,12 +31,12 @@ export default function MediaPicker() {
       >
         <div className="flex flex-row items-center justify-between mb-8 space-x-2">
           <div className="text-md font-medium text-black dark:text-white">
-            Choose a media to send
+            Choose Files to send
           </div>
 
           <button
             onClick={() => {
-              dispatch(toggleMediaModal(false));
+              dispatch(toggleDocumentModal(false));
             }}
           >
             <X size={24} />
