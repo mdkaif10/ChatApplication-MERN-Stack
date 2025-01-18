@@ -58,10 +58,9 @@ targetContainer.appendChild(audio);
 
          <div className="flex flex-row items-center space-x-4 w-full mt-8 ">
           <button className="w-full bg-primary rounded-lg p-2 text-white hover: bg-opacity-90">Send </button>
-           <button onClick={() => 
-            {
+           <button onClick={() => {
               dispatch(toggleAudioModal(false));
-              }}
+            }}
             className="w-full border bg-transparent border-red rounded-lg p-2 text-red">Cancel </button>
            
             </div>

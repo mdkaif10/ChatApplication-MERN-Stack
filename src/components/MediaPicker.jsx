@@ -1,13 +1,23 @@
 import { X } from "@phosphor-icons/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toggleMediaModal } from "../redux/slices/app";
 
 export default function MediaPicker() {
   const modalRef = React.useRef(null);
   const dispatch = useDispatch();
 
-    const {media} = useSelector((state) => state.app.modals);
+  const { media } = useSelector((state) => state.app.modals);
 
+  useEffect(() => {
+    const keyHandler = ({ keyCode }) => {
+      if (!media || keyCode !== 27) return;
+
+      dispatch(toggleMediaModal(false));
+    };
+    document.addEventListener("keydown", keyHandler);
+    return () => document.removeEventListener("keydown", keyHandler);
+  });
 
   return (
     <div
@@ -26,12 +36,7 @@ export default function MediaPicker() {
 
           <button
             onClick={() => {
-              //        dispatch(
-              //          toggleGifModal({
-              //            value:false,
-              //          url: "",
-              // })
-              // );
+              dispatch(toggleMediaModal(false));
             }}
           >
             <X size={24} />

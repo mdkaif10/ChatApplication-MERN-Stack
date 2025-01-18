@@ -1,6 +1,7 @@
 import { File, Image, Paperclip } from "@phosphor-icons/react";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
+import { toggleMediaModal } from "../redux/slices/app";
 
 export default function Attachment() {
   const dispatch = useDispatch();
